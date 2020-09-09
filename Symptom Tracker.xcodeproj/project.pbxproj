@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A23B884B0E32C7B3F238DB5 /* Pods_Symptom_TrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56049F2ADA5D325A55DA9C0E /* Pods_Symptom_TrackerTests.framework */; };
 		40AC5F502508469300CE1350 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F4F2508469300CE1350 /* AppDelegate.swift */; };
 		40AC5F522508469300CE1350 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F512508469300CE1350 /* SceneDelegate.swift */; };
 		40AC5F542508469300CE1350 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F532508469300CE1350 /* ViewController.swift */; };
@@ -15,6 +16,11 @@
 		40AC5F5C2508469600CE1350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F5A2508469600CE1350 /* LaunchScreen.storyboard */; };
 		40AC5F672508469600CE1350 /* Symptom_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F662508469600CE1350 /* Symptom_TrackerTests.swift */; };
 		40AC5F722508469600CE1350 /* Symptom_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F712508469600CE1350 /* Symptom_TrackerUITests.swift */; };
+		40AC5F802508470800CE1350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */; };
+		40AC5F812508470800CE1350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */; };
+		40AC5F822508470800CE1350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */; };
+		AC9E116DEEF2E50C15969430 /* Pods_Symptom_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12C585D7F249CBD9430CB68 /* Pods_Symptom_Tracker.framework */; };
+		F91645D7576931D2BDAC5920 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D650E3FC03658C8246523F6 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,16 @@
 		40AC5F6D2508469600CE1350 /* Symptom TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Symptom TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AC5F712508469600CE1350 /* Symptom_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom_TrackerUITests.swift; sourceTree = "<group>"; };
 		40AC5F732508469600CE1350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		56049F2ADA5D325A55DA9C0E /* Pods_Symptom_TrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Symptom_TrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A64182630931005D36AF34 /* Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		859D9B1D271FA1DEE07E1A95 /* Pods-Symptom TrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom TrackerTests.release.xcconfig"; path = "Target Support Files/Pods-Symptom TrackerTests/Pods-Symptom TrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D650E3FC03658C8246523F6 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Symptom_Tracker_Symptom_TrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4CE0FC1F6FAD1697F566908 /* Pods-Symptom Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom Tracker.release.xcconfig"; path = "Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		D12C585D7F249CBD9430CB68 /* Pods_Symptom_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Symptom_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5DACA082D32E15CC1E5CF44 /* Pods-Symptom TrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom TrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-Symptom TrackerTests/Pods-Symptom TrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F463E28A586157C68D2E5E6E /* Pods-Symptom Tracker-Symptom TrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom Tracker-Symptom TrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC6D6CB374F50E42208DC12C /* Pods-Symptom Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9E116DEEF2E50C15969430 /* Pods_Symptom_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A23B884B0E32C7B3F238DB5 /* Pods_Symptom_TrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F91645D7576931D2BDAC5920 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +102,8 @@
 				40AC5F652508469600CE1350 /* Symptom TrackerTests */,
 				40AC5F702508469600CE1350 /* Symptom TrackerUITests */,
 				40AC5F4D2508469300CE1350 /* Products */,
+				A7EB4CB92BAF5F4A13427BBC /* Pods */,
+				54F7C60E160389466CA3AF1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +123,7 @@
 				40AC5F4F2508469300CE1350 /* AppDelegate.swift */,
 				40AC5F512508469300CE1350 /* SceneDelegate.swift */,
 				40AC5F532508469300CE1350 /* ViewController.swift */,
+				40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */,
 				40AC5F552508469300CE1350 /* Main.storyboard */,
 				40AC5F582508469600CE1350 /* Assets.xcassets */,
 				40AC5F5A2508469600CE1350 /* LaunchScreen.storyboard */,
@@ -128,6 +150,29 @@
 			path = "Symptom TrackerUITests";
 			sourceTree = "<group>";
 		};
+		54F7C60E160389466CA3AF1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D12C585D7F249CBD9430CB68 /* Pods_Symptom_Tracker.framework */,
+				8D650E3FC03658C8246523F6 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework */,
+				56049F2ADA5D325A55DA9C0E /* Pods_Symptom_TrackerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7EB4CB92BAF5F4A13427BBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC6D6CB374F50E42208DC12C /* Pods-Symptom Tracker.debug.xcconfig */,
+				B4CE0FC1F6FAD1697F566908 /* Pods-Symptom Tracker.release.xcconfig */,
+				F463E28A586157C68D2E5E6E /* Pods-Symptom Tracker-Symptom TrackerUITests.debug.xcconfig */,
+				66A64182630931005D36AF34 /* Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig */,
+				D5DACA082D32E15CC1E5CF44 /* Pods-Symptom TrackerTests.debug.xcconfig */,
+				859D9B1D271FA1DEE07E1A95 /* Pods-Symptom TrackerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +180,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40AC5F762508469600CE1350 /* Build configuration list for PBXNativeTarget "Symptom Tracker" */;
 			buildPhases = (
+				76F43DAFCAFDED35FA99B4C3 /* [CP] Check Pods Manifest.lock */,
 				40AC5F482508469300CE1350 /* Sources */,
 				40AC5F492508469300CE1350 /* Frameworks */,
 				40AC5F4A2508469300CE1350 /* Resources */,
+				4F3AD4E88D34882BC022C6EC /* [CP] Embed Pods Frameworks */,
+				EC1F8B656892A706E4179E95 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +200,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40AC5F792508469600CE1350 /* Build configuration list for PBXNativeTarget "Symptom TrackerTests" */;
 			buildPhases = (
+				82F8A388ECCD3CD01D8D9924 /* [CP] Check Pods Manifest.lock */,
 				40AC5F5E2508469600CE1350 /* Sources */,
 				40AC5F5F2508469600CE1350 /* Frameworks */,
 				40AC5F602508469600CE1350 /* Resources */,
@@ -170,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40AC5F7C2508469600CE1350 /* Build configuration list for PBXNativeTarget "Symptom TrackerUITests" */;
 			buildPhases = (
+				D2E7FF53AC778CD931AE46BB /* [CP] Check Pods Manifest.lock */,
 				40AC5F692508469600CE1350 /* Sources */,
 				40AC5F6A2508469600CE1350 /* Frameworks */,
 				40AC5F6B2508469600CE1350 /* Resources */,
+				3560C26E6EB930A92EC16690 /* [CP] Embed Pods Frameworks */,
+				BF0547BE553114A741711961 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40AC5F5C2508469600CE1350 /* LaunchScreen.storyboard in Resources */,
+				40AC5F802508470800CE1350 /* GoogleService-Info.plist in Resources */,
 				40AC5F592508469600CE1350 /* Assets.xcassets in Resources */,
 				40AC5F572508469300CE1350 /* Main.storyboard in Resources */,
 			);
@@ -242,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AC5F812508470800CE1350 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +303,148 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AC5F822508470800CE1350 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3560C26E6EB930A92EC16690 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F3AD4E88D34882BC022C6EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76F43DAFCAFDED35FA99B4C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Symptom Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82F8A388ECCD3CD01D8D9924 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Symptom TrackerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF0547BE553114A741711961 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2E7FF53AC778CD931AE46BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Symptom Tracker-Symptom TrackerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC1F8B656892A706E4179E95 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Symptom Tracker/Pods-Symptom Tracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40AC5F482508469300CE1350 /* Sources */ = {
@@ -432,6 +624,7 @@
 		};
 		40AC5F772508469600CE1350 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC6D6CB374F50E42208DC12C /* Pods-Symptom Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,6 +642,7 @@
 		};
 		40AC5F782508469600CE1350 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4CE0FC1F6FAD1697F566908 /* Pods-Symptom Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +660,7 @@
 		};
 		40AC5F7A2508469600CE1350 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5DACA082D32E15CC1E5CF44 /* Pods-Symptom TrackerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +682,7 @@
 		};
 		40AC5F7B2508469600CE1350 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 859D9B1D271FA1DEE07E1A95 /* Pods-Symptom TrackerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +704,7 @@
 		};
 		40AC5F7D2508469600CE1350 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F463E28A586157C68D2E5E6E /* Pods-Symptom Tracker-Symptom TrackerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +724,7 @@
 		};
 		40AC5F7E2508469600CE1350 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66A64182630931005D36AF34 /* Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
