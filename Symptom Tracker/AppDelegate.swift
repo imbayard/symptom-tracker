@@ -19,18 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         print(error)
         return
       }
-      guard let authentication = user.authentication else { return }
-      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                        accessToken: authentication.accessToken)
-      // Sign in to firebase
-      Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-        if let error = error {
-            print("firebase sign in error")
-            print(error)
-            return
-        }
-        print("User is signed in")
-    }
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

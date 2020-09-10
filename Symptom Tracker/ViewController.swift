@@ -15,7 +15,7 @@ import FirebaseDatabase
 //         Login --> Dashboard --> Symptom Tracker --> Dashboard --> Data page (with API)
 //         Login --> Dashboard --> Data page (with API)
 // Segues:
-//         Login --> Dashboard
+//         Login --> Dashboard (covered on sign in)
 //         Data --> Dashboard
 //         Symptom Tracker --> Dashboard
 //         Dashboard --> Symptom Tracker
@@ -32,10 +32,23 @@ class ViewController: UIViewController, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
-            print(error)
+            guard let myError = error else { return }
+            print(myError)
             return
         }
-        print(user.profile.email) // Instead of printing we want to send this to database
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                            accessToken: authentication.accessToken)
+        // Sign in to firebase
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("firebase sign in error")
+                print(error)
+                return
+            }
+            guard let email = user.profile.email else { return }
+            print("User is signed in", email)
+        }
         performSegue(withIdentifier: "Login_To_Dash", sender: ViewController())
     }
 }
