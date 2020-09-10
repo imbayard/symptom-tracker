@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3A23B884B0E32C7B3F238DB5 /* Pods_Symptom_TrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56049F2ADA5D325A55DA9C0E /* Pods_Symptom_TrackerTests.framework */; };
+		40372EC7250ABF0900244796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40372EC6250ABF0900244796 /* GoogleService-Info.plist */; };
+		40372EC8250ABF0900244796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40372EC6250ABF0900244796 /* GoogleService-Info.plist */; };
+		40372EC9250ABF0900244796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40372EC6250ABF0900244796 /* GoogleService-Info.plist */; };
+		40903A47250970800028A12F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F552508469300CE1350 /* Main.storyboard */; };
+		40903A48250970800028A12F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F552508469300CE1350 /* Main.storyboard */; };
 		40AC5F502508469300CE1350 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F4F2508469300CE1350 /* AppDelegate.swift */; };
 		40AC5F522508469300CE1350 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F512508469300CE1350 /* SceneDelegate.swift */; };
 		40AC5F542508469300CE1350 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F532508469300CE1350 /* ViewController.swift */; };
@@ -16,9 +21,6 @@
 		40AC5F5C2508469600CE1350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F5A2508469600CE1350 /* LaunchScreen.storyboard */; };
 		40AC5F672508469600CE1350 /* Symptom_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F662508469600CE1350 /* Symptom_TrackerTests.swift */; };
 		40AC5F722508469600CE1350 /* Symptom_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC5F712508469600CE1350 /* Symptom_TrackerUITests.swift */; };
-		40AC5F802508470800CE1350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */; };
-		40AC5F812508470800CE1350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */; };
-		40AC5F822508470800CE1350 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */; };
 		AC9E116DEEF2E50C15969430 /* Pods_Symptom_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12C585D7F249CBD9430CB68 /* Pods_Symptom_Tracker.framework */; };
 		F91645D7576931D2BDAC5920 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D650E3FC03658C8246523F6 /* Pods_Symptom_Tracker_Symptom_TrackerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40372EC6250ABF0900244796 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40AC5F4C2508469300CE1350 /* Symptom Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Symptom Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AC5F4F2508469300CE1350 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AC5F512508469300CE1350 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		40AC5F6D2508469600CE1350 /* Symptom TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Symptom TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AC5F712508469600CE1350 /* Symptom_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom_TrackerUITests.swift; sourceTree = "<group>"; };
 		40AC5F732508469600CE1350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		56049F2ADA5D325A55DA9C0E /* Pods_Symptom_TrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Symptom_TrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A64182630931005D36AF34 /* Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-Symptom Tracker-Symptom TrackerUITests/Pods-Symptom Tracker-Symptom TrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		859D9B1D271FA1DEE07E1A95 /* Pods-Symptom TrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Symptom TrackerTests.release.xcconfig"; path = "Target Support Files/Pods-Symptom TrackerTests/Pods-Symptom TrackerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,10 +122,10 @@
 		40AC5F4E2508469300CE1350 /* Symptom Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				40372EC6250ABF0900244796 /* GoogleService-Info.plist */,
 				40AC5F4F2508469300CE1350 /* AppDelegate.swift */,
 				40AC5F512508469300CE1350 /* SceneDelegate.swift */,
 				40AC5F532508469300CE1350 /* ViewController.swift */,
-				40AC5F7F2508470800CE1350 /* GoogleService-Info.plist */,
 				40AC5F552508469300CE1350 /* Main.storyboard */,
 				40AC5F582508469600CE1350 /* Assets.xcassets */,
 				40AC5F5A2508469600CE1350 /* LaunchScreen.storyboard */,
@@ -285,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40AC5F5C2508469600CE1350 /* LaunchScreen.storyboard in Resources */,
-				40AC5F802508470800CE1350 /* GoogleService-Info.plist in Resources */,
+				40372EC7250ABF0900244796 /* GoogleService-Info.plist in Resources */,
 				40AC5F592508469600CE1350 /* Assets.xcassets in Resources */,
 				40AC5F572508469300CE1350 /* Main.storyboard in Resources */,
 			);
@@ -295,7 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40AC5F812508470800CE1350 /* GoogleService-Info.plist in Resources */,
+				40903A47250970800028A12F /* Main.storyboard in Resources */,
+				40372EC8250ABF0900244796 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +306,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40AC5F822508470800CE1350 /* GoogleService-Info.plist in Resources */,
+				40903A48250970800028A12F /* Main.storyboard in Resources */,
+				40372EC9250ABF0900244796 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
