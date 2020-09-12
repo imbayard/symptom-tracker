@@ -89,6 +89,7 @@ class SymptomTracker_ViewController: UIViewController {
         let cough = cough_switch.isOn ? 1:0
         let fever = fever_switch.isOn ? 1:0
         
+        
         // Set symptoms here (prep for sending to firebase)
         let symptoms = [
             "cough": cough,
