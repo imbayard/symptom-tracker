@@ -64,7 +64,7 @@ class SymptomTracker_ViewController: UIViewController {
     // References to the symptom switches
     @IBOutlet weak var cough_switch: UISwitch!
     @IBOutlet weak var fever_switch: UISwitch!
-    
+    @IBOutlet weak var shortness_of_breath_switch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +88,14 @@ class SymptomTracker_ViewController: UIViewController {
         // Get numerical value for a symptom
         let cough = cough_switch.isOn ? 1:0
         let fever = fever_switch.isOn ? 1:0
+        let shortness_of_breath = shortness_of_breath_switch.isOn ? 1:0
         
         
         // Set symptoms here (prep for sending to firebase)
         let symptoms = [
             "cough": cough,
             "fever": fever,
+            "shortness of breath": shortness_of_breath,
             ] as [String : Any]
         
         // Print to console to see if formatted correctly
