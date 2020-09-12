@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 import FirebaseDatabase
+import Foundation
 
 // Typical user flow:
 //         Login --> Dashboard --> Symptom Tracker --> Dashboard --> Data page (with API)
@@ -59,8 +60,10 @@ class SymptomTracker_ViewController: UIViewController {
     
     // Create database reference
     var refSymptomDb: DatabaseReference!
-    // References to the symptom segment sliders in HomePage_ViewController
+    
+    // References to the symptom switches
     @IBOutlet weak var cough_switch: UISwitch!
+    @IBOutlet weak var fever_switch: UISwitch!
     
     
     override func viewDidLoad() {
@@ -70,7 +73,6 @@ class SymptomTracker_ViewController: UIViewController {
     }
     
     // The 'on click' function triggered after user presses submit
-
     @IBAction func submitSymptoms(_ sender: UIButton) {
         addSymptoms()
     }
@@ -80,13 +82,24 @@ class SymptomTracker_ViewController: UIViewController {
     func addSymptoms() {
         // Need to find some way of ensuring an account can only record symptoms once per day
         // Research user privileges, account privileges, etc with firebase
+        
         let key = refSymptomDb.childByAutoId().key
+        
+        // Get numerical value for a symptom
+        let cough = cough_switch.isOn ? 1:0
+        let fever = fever_switch.isOn ? 1:0
+        
+        // Set symptoms here (prep for sending to firebase)
         let symptoms = [
-            "key": key,
-            "cough": cough_switch.isOn,
+            "cough": cough,
+            "fever": fever,
             ] as [String : Any]
+        
+        // Print to console to see if formatted correctly
         print(symptoms)
-        refSymptomDb.child(key ?? "abc").setValue(symptoms)
+        
+        // Uncomment this when we want to send a response to firebase
+        // refSymptomDb.child(key!).setValue(symptoms)
         
         // Symptoms:
         //     Fever (100 deg)
@@ -110,9 +123,39 @@ class SymptomTracker_ViewController: UIViewController {
 }
 
 class HomePage_ViewController: UIViewController {
-    
-    //Need to move code from here --> Another View Controller called "Symptom Tracker"
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+    }
+}
 
+class StatsView_ViewController: UIViewController {
+    @IBOutlet weak var global_cases_label: UILabel!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+        let semaphore = DispatchSemaphore (value: 0)
+        
+        // Create URL object
+        guard let url = URL(string: "https://api.covid19api.com/summary") else {
+            print ("Error creating URL")
+            return
+        }
+        
+        // Create request for API
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+    }
+    
 }
 
