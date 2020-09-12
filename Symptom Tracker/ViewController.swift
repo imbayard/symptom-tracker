@@ -65,6 +65,12 @@ class SymptomTracker_ViewController: UIViewController {
     @IBOutlet weak var cough_switch: UISwitch!
     @IBOutlet weak var fever_switch: UISwitch!
     @IBOutlet weak var shortness_of_breath_switch: UISwitch!
+    @IBOutlet weak var sore_throat_switch: UISwitch!
+    @IBOutlet weak var loss_taste_smell_switch: UISwitch!
+    @IBOutlet weak var vomiting_switch: UISwitch!
+    @IBOutlet weak var severe_fatigue_switch: UISwitch!
+    @IBOutlet weak var severe_muscle_aches_switch: UISwitch!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,13 +95,22 @@ class SymptomTracker_ViewController: UIViewController {
         let cough = cough_switch.isOn ? 1:0
         let fever = fever_switch.isOn ? 1:0
         let shortness_of_breath = shortness_of_breath_switch.isOn ? 1:0
-        
+        let sore_throat = sore_throat_switch.isOn ? 1:0
+        let loss_taste_smell = loss_taste_smell_switch.isOn ? 1:0
+        let vomiting = vomiting_switch.isOn ? 1:0
+        let severe_fatigue = severe_fatigue_switch.isOn ? 1:0
+        let severe_muscle_aches = severe_muscle_aches_switch.isOn ? 1:0
         
         // Set symptoms here (prep for sending to firebase)
         let symptoms = [
             "cough": cough,
             "fever": fever,
             "shortness of breath": shortness_of_breath,
+            "sore throat": sore_throat,
+            "loss of taste or smell": loss_taste_smell,
+            "vomiting": vomiting,
+            "severe fatigue": severe_fatigue,
+            "severe muscle aches": severe_muscle_aches,
             ] as [String : Any]
         
         // Print to console to see if formatted correctly
