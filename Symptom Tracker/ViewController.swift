@@ -60,6 +60,7 @@ class SymptomTracker_ViewController: UIViewController {
     
     // Create database reference
     var refSymptomDb: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
     
     // References to the symptom switches
     @IBOutlet weak var cough_switch: UISwitch!
@@ -72,6 +73,7 @@ class SymptomTracker_ViewController: UIViewController {
     @IBOutlet weak var severe_muscle_aches_switch: UISwitch!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -79,63 +81,76 @@ class SymptomTracker_ViewController: UIViewController {
     }
     
     // The 'on click' function triggered after user presses submit
-    @IBAction func submitSymptoms(_ sender: UIButton) {
-        addSymptoms()
+    @IBAction func clickSubmit(_ sender: Any) {
+        setRealtimeSymptoms()
+        
+        performSegue(withIdentifier: "After-Submit", sender: ViewController())
+        return
     }
     
+    func setRealtimeSymptoms() {
+        
+        // Get the current database values
+        databaseHandle = refSymptomDb?.child("Symptoms").observe(.value, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! [String:AnyObject]
+
+            // Update the cough symptom value
+            let cough = snapshotValue["cough"] as! Int
+            let fever = snapshotValue["fever"] as! Int
+            let shortness_of_breath = snapshotValue["shortness of breath"] as! Int
+            let sore_throat = snapshotValue["sore throat"] as! Int
+            let loss_taste_smell = snapshotValue["loss of taste or smell"] as! Int
+            let vomiting = snapshotValue["vomiting"] as! Int
+            let severe_fatigue = snapshotValue["severe fatigue"] as! Int
+            let severe_muscle_aches = snapshotValue["severe muscle aches"] as! Int
+            
+            self.addSymptoms(cough: cough, fever: fever, shortness_of_breath: shortness_of_breath,
+                sore_throat: sore_throat, loss_taste_smell: loss_taste_smell,
+                vomiting: vomiting, severe_fatigue: severe_fatigue, severe_muscle_aches: severe_muscle_aches)
+            })
+        return
+    }
     
     // Record the symptoms in the database
-    func addSymptoms() {
+    func addSymptoms(cough: Int, fever: Int, shortness_of_breath: Int, sore_throat: Int, loss_taste_smell: Int, vomiting: Int, severe_fatigue: Int, severe_muscle_aches: Int) {
         // Need to find some way of ensuring an account can only record symptoms once per day
         // Research user privileges, account privileges, etc with firebase
-        
-        let key = refSymptomDb.childByAutoId().key
-        
+    
         // Get numerical value for a symptom
-        let cough = cough_switch.isOn ? 1:0
-        let fever = fever_switch.isOn ? 1:0
-        let shortness_of_breath = shortness_of_breath_switch.isOn ? 1:0
-        let sore_throat = sore_throat_switch.isOn ? 1:0
-        let loss_taste_smell = loss_taste_smell_switch.isOn ? 1:0
-        let vomiting = vomiting_switch.isOn ? 1:0
-        let severe_fatigue = severe_fatigue_switch.isOn ? 1:0
-        let severe_muscle_aches = severe_muscle_aches_switch.isOn ? 1:0
+        let cough_updated = cough + (cough_switch.isOn ? 1:0)
+        let fever_updated = fever + (fever_switch.isOn ? 1:0)
+        let shortness_of_breath_updated = shortness_of_breath + (shortness_of_breath_switch.isOn ? 1:0)
+        let sore_throat_updated = sore_throat + (sore_throat_switch.isOn ? 1:0)
+        let loss_taste_smell_updated = loss_taste_smell + (loss_taste_smell_switch.isOn ? 1:0)
+        let vomiting_updated = vomiting + (vomiting_switch.isOn ? 1:0)
+        let severe_fatigue_updated = severe_fatigue + (severe_fatigue_switch.isOn ? 1:0)
+        let severe_muscle_aches_updated = severe_muscle_aches + (severe_muscle_aches_switch.isOn ? 1:0)
         
         // Set symptoms here (prep for sending to firebase)
         let symptoms = [
-            "cough": cough,
-            "fever": fever,
-            "shortness of breath": shortness_of_breath,
-            "sore throat": sore_throat,
-            "loss of taste or smell": loss_taste_smell,
-            "vomiting": vomiting,
-            "severe fatigue": severe_fatigue,
-            "severe muscle aches": severe_muscle_aches,
+            "cough": cough_updated,
+            "fever": fever_updated,
+            "shortness of breath": shortness_of_breath_updated,
+            "sore throat": sore_throat_updated,
+            "loss of taste or smell": loss_taste_smell_updated,
+            "vomiting": vomiting_updated,
+            "severe fatigue": severe_fatigue_updated,
+            "severe muscle aches": severe_muscle_aches_updated,
             ] as [String : Any]
         
-        // Print to console to see if formatted correctly
-        print(symptoms)
-        
-        // Uncomment this when we want to send a response to firebase
-        // refSymptomDb.child(key!).setValue(symptoms)
-        
-        // Symptoms:
-        //     Fever (100 deg)
-        //     Cough
-        //     Shortness of breath / difficulty breathing
-        //     Sore throat
-        //     New loss of taste or smell
-        //     Vomiting
-        //     Severe fatigue
-        //     Severe muscle aches
-        
-        // We want to
-        //            1) Pull from database and get current number of "Cough", "Fever", etc
-        //            2) Pull from user input and add the values to the database values
-        //               i.e. if User enters yes for cough, the cough value gets +1
-        //            3) Push the new value back to the database
-        //            4) (Maybe?) Error check to see that the new value is correct
-        
+        refSymptomDb.child("Symptoms").setValue(symptoms)
+        resetSymptoms()
+        return
+    }
+    func resetSymptoms(){
+        cough_switch.setOn(false, animated: false)
+        fever_switch.setOn(false, animated: false)
+        shortness_of_breath_switch.setOn(false, animated: false)
+        sore_throat_switch.setOn(false, animated: false)
+        loss_taste_smell_switch.setOn(false, animated: false)
+        vomiting_switch.setOn(false, animated: false)
+        severe_fatigue_switch.setOn(false, animated: false)
+        severe_muscle_aches_switch.setOn(false, animated: false)
     }
     
 }
@@ -148,7 +163,6 @@ class HomePage_ViewController: UIViewController {
 }
 
 class StatsView_ViewController: UIViewController {
-    @IBOutlet weak var global_cases_label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -174,6 +188,5 @@ class StatsView_ViewController: UIViewController {
         task.resume()
         semaphore.wait()
     }
-    
 }
 
