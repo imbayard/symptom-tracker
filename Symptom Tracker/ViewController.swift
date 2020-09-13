@@ -163,30 +163,76 @@ class HomePage_ViewController: UIViewController {
 }
 
 class StatsView_ViewController: UIViewController {
+    
+    var refSymptomDb: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    
+    // Outlets for symptom stats
+    @IBOutlet weak var cough_number: UILabel!
+    @IBOutlet weak var fever_number: UILabel!
+    @IBOutlet weak var breath_number: UILabel!
+    @IBOutlet weak var throat_number: UILabel!
+    @IBOutlet weak var taste_number: UILabel!
+    @IBOutlet weak var vomiting_number: UILabel!
+    @IBOutlet weak var fatigue_number: UILabel!
+    @IBOutlet weak var aches_number: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        refSymptomDb = Database.database().reference().child("symptoms")
+        loadSymptoms()
+    }
+
+    func loadSymptoms() {
+        databaseHandle = refSymptomDb?.child("Symptoms").observe(.value, with: { (snapshot) in
+                let snapshotValue = snapshot.value as! [String:AnyObject]
+
+                // Update the symptom values
+                let cough = snapshotValue["cough"] as! Int
+                let fever = snapshotValue["fever"] as! Int
+                let shortness_of_breath = snapshotValue["shortness of breath"] as! Int
+                let sore_throat = snapshotValue["sore throat"] as! Int
+                let loss_taste_smell = snapshotValue["loss of taste or smell"] as! Int
+                let vomiting = snapshotValue["vomiting"] as! Int
+                let severe_fatigue = snapshotValue["severe fatigue"] as! Int
+                let severe_muscle_aches = snapshotValue["severe muscle aches"] as! Int
+                
+                // Set the labels
+                self.cough_number.text = String(cough)
+                self.fever_number.text = String(fever)
+                self.breath_number.text = String(shortness_of_breath)
+                self.throat_number.text = String(sore_throat)
+                self.taste_number.text = String(loss_taste_smell)
+                self.vomiting_number.text = String(vomiting)
+                self.fatigue_number.text = String(severe_fatigue)
+                self.aches_number.text = String(severe_muscle_aches)
+        })
+        return
+    }
+    func apiCall() {
         let semaphore = DispatchSemaphore (value: 0)
         
-        // Create URL object
-        guard let url = URL(string: "https://api.covid19api.com/summary") else {
-            print ("Error creating URL")
-            return
+            // Create URL object
+            guard let url = URL(string: "https://api.covid19api.com/summary") else {
+                print ("Error creating URL")
+                return
+            }
+            
+            // Create request for API
+            var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+            request.httpMethod = "GET"
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+              guard let data = data else {
+                print(String(describing: error))
+                return
+              }
+              print(String(data: data, encoding: .utf8)!)
+              semaphore.signal()
+            }
+            task.resume()
+            semaphore.wait()
         }
-        
-        // Create request for API
-        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-          guard let data = data else {
-            print(String(describing: error))
-            return
-          }
-          print(String(data: data, encoding: .utf8)!)
-          semaphore.signal()
-        }
-        task.resume()
-        semaphore.wait()
-    }
 }
 
