@@ -183,6 +183,7 @@ class StatsView_ViewController: UIViewController {
         self.view.backgroundColor = .white
         refSymptomDb = Database.database().reference().child("symptoms")
         loadSymptoms()
+        apiCall()
     }
 
     func loadSymptoms() {
@@ -211,6 +212,7 @@ class StatsView_ViewController: UIViewController {
         })
         return
     }
+    @IBOutlet weak var total_global_label: UILabel!
     func apiCall() {
         let semaphore = DispatchSemaphore (value: 0)
         
@@ -223,12 +225,29 @@ class StatsView_ViewController: UIViewController {
             // Create request for API
             var request = URLRequest(url: url, timeoutInterval: Double.infinity)
             request.httpMethod = "GET"
+            // Begin getting data
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
               guard let data = data else {
                 print(String(describing: error))
                 return
               }
-              print(String(data: data, encoding: .utf8)!)
+              // Serialize JSON object
+              guard let parsed = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
+                // Begin parsing
+                guard let global = parsed as? [String: Any] else {
+                    print("couldn't parse")
+                    return
+                }
+                // Get next level of data
+                let global_data = global["Global"]
+                guard let parsed_global = global_data as? [String: Any] else {
+                    print("couldn't parse global")
+                    return
+                }
+              // Get and set the total confirmed cases count
+              let total_confirmed = parsed_global["TotalConfirmed"] as! Int
+              
+              self.total_global_label.text = String(total_confirmed)
               semaphore.signal()
             }
             task.resume()
