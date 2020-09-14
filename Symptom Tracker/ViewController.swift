@@ -62,6 +62,7 @@ class SymptomTracker_ViewController: UIViewController {
     
     // Create database reference
     var refSymptomDb: DatabaseReference!
+    var refUserDb: DatabaseReference!
     var databaseHandle: DatabaseHandle!
     
     // References to the symptom switches
@@ -73,6 +74,7 @@ class SymptomTracker_ViewController: UIViewController {
     @IBOutlet weak var vomiting_switch: UISwitch!
     @IBOutlet weak var severe_fatigue_switch: UISwitch!
     @IBOutlet weak var severe_muscle_aches_switch: UISwitch!
+    @IBOutlet weak var valid_submission: UISwitch!
     
     
     
@@ -80,14 +82,25 @@ class SymptomTracker_ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         refSymptomDb = Database.database().reference().child("symptoms")
+        refUserDb = Database.database().reference().child("users")
     }
     
     // The 'on click' function triggered after user presses submit
     @IBAction func clickSubmit(_ sender: Any) {
-        setRealtimeSymptoms()
+        guard let user = Auth.auth().currentUser?.displayName else {
+            print("No user")
+            return
+        }
+        let dateObj = Date().description
+        let dateComps = dateObj.components(separatedBy: " ")
+        let date = dateComps.first!
         
+        if valid_submission.isOn {
+        refUserDb.child(date).child(user).setValue(true)
+        setRealtimeSymptoms()
         performSegue(withIdentifier: "After-Submit", sender: ViewController())
         return
+        } else { return }
     }
     
     func setRealtimeSymptoms() {
@@ -129,6 +142,7 @@ class SymptomTracker_ViewController: UIViewController {
         let vomiting_updated = vomiting + (vomiting_switch.isOn ? 1:0)
         let severe_fatigue_updated = severe_fatigue + (severe_fatigue_switch.isOn ? 1:0)
         let severe_muscle_aches_updated = severe_muscle_aches + (severe_muscle_aches_switch.isOn ? 1:0)
+        let entry_count_updated = entry_count + (valid_submission.isOn ? 1:0)
         
         // Set symptoms here (prep for sending to firebase)
         let symptoms = [
@@ -140,7 +154,7 @@ class SymptomTracker_ViewController: UIViewController {
             "vomiting": vomiting_updated,
             "severe fatigue": severe_fatigue_updated,
             "severe muscle aches": severe_muscle_aches_updated,
-            "total entries": entry_count + 1,
+            "total entries": entry_count_updated,
             ] as [String : Any]
         
         refSymptomDb.child("Symptoms").setValue(symptoms)
@@ -156,6 +170,7 @@ class SymptomTracker_ViewController: UIViewController {
         vomiting_switch.setOn(false, animated: false)
         severe_fatigue_switch.setOn(false, animated: false)
         severe_muscle_aches_switch.setOn(false, animated: false)
+        valid_submission.setOn(false, animated: false)
     }
     
 }
@@ -186,7 +201,6 @@ class HomePage_ViewController: UIViewController {
                 self.error_msg.text = "You Already Logged Symptoms Today"
                 print("Should show")
             } else {
-                self.refSymptomDb.child(date).child(user).setValue(true)
                 self.performSegue(withIdentifier: "Log-Symptoms", sender: HomePage_ViewController())
             }
         })
