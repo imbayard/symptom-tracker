@@ -23,6 +23,8 @@ import Foundation
 //         Dashboard --> Data page
 
 class ViewController: UIViewController, GIDSignInDelegate {
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -103,16 +105,18 @@ class SymptomTracker_ViewController: UIViewController {
             let vomiting = snapshotValue["vomiting"] as! Int
             let severe_fatigue = snapshotValue["severe fatigue"] as! Int
             let severe_muscle_aches = snapshotValue["severe muscle aches"] as! Int
+            let entry_count = snapshotValue["total entries"] as! Int
             
             self.addSymptoms(cough: cough, fever: fever, shortness_of_breath: shortness_of_breath,
                 sore_throat: sore_throat, loss_taste_smell: loss_taste_smell,
-                vomiting: vomiting, severe_fatigue: severe_fatigue, severe_muscle_aches: severe_muscle_aches)
+                vomiting: vomiting, severe_fatigue: severe_fatigue, severe_muscle_aches: severe_muscle_aches,
+                entry_count: entry_count)
             })
         return
     }
     
     // Record the symptoms in the database
-    func addSymptoms(cough: Int, fever: Int, shortness_of_breath: Int, sore_throat: Int, loss_taste_smell: Int, vomiting: Int, severe_fatigue: Int, severe_muscle_aches: Int) {
+    func addSymptoms(cough: Int, fever: Int, shortness_of_breath: Int, sore_throat: Int, loss_taste_smell: Int, vomiting: Int, severe_fatigue: Int, severe_muscle_aches: Int, entry_count: Int) {
         // Need to find some way of ensuring an account can only record symptoms once per day
         // Research user privileges, account privileges, etc with firebase
     
@@ -136,6 +140,7 @@ class SymptomTracker_ViewController: UIViewController {
             "vomiting": vomiting_updated,
             "severe fatigue": severe_fatigue_updated,
             "severe muscle aches": severe_muscle_aches_updated,
+            "total entries": entry_count + 1,
             ] as [String : Any]
         
         refSymptomDb.child("Symptoms").setValue(symptoms)
@@ -156,10 +161,38 @@ class SymptomTracker_ViewController: UIViewController {
 }
 
 class HomePage_ViewController: UIViewController {
+    
+    var refSymptomDb: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    @IBOutlet weak var error_msg: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        refSymptomDb = Database.database().reference().child("users")
     }
+    
+    @IBAction func logSymptoms(_ sender: Any) {
+        guard let user = Auth.auth().currentUser?.displayName else {
+            print("No user")
+            return
+        }
+        let dateObj = Date().description
+        let dateComps = dateObj.components(separatedBy: " ")
+        let date = dateComps.first!
+        
+        databaseHandle = refSymptomDb?.child(date).observe(.value, with: { (snapshot) in
+            if (snapshot.value as! NSDictionary)[user] != nil{
+                self.error_msg.text = "You Already Logged Symptoms Today"
+                print("Should show")
+            } else {
+                self.refSymptomDb.child(date).child(user).setValue(true)
+                self.performSegue(withIdentifier: "Log-Symptoms", sender: HomePage_ViewController())
+            }
+        })
+    }
+    
+    
 }
 
 class StatsView_ViewController: UIViewController {
@@ -177,6 +210,14 @@ class StatsView_ViewController: UIViewController {
     @IBOutlet weak var fatigue_number: UILabel!
     @IBOutlet weak var aches_number: UILabel!
     
+    @IBOutlet weak var cough_percent: UILabel!
+    @IBOutlet weak var fever_percent: UILabel!
+    @IBOutlet weak var breath_percent: UILabel!
+    @IBOutlet weak var throat_percent: UILabel!
+    @IBOutlet weak var taste_percent: UILabel!
+    @IBOutlet weak var vomiting_percent: UILabel!
+    @IBOutlet weak var fatigue_percent: UILabel!
+    @IBOutlet weak var aches_percent: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,8 +240,9 @@ class StatsView_ViewController: UIViewController {
                 let vomiting = snapshotValue["vomiting"] as! Int
                 let severe_fatigue = snapshotValue["severe fatigue"] as! Int
                 let severe_muscle_aches = snapshotValue["severe muscle aches"] as! Int
+                let total_entries = snapshotValue["total entries"] as! Float
                 
-                // Set the labels
+                // Set the numbers
                 self.cough_number.text = String(cough)
                 self.fever_number.text = String(fever)
                 self.breath_number.text = String(shortness_of_breath)
@@ -209,6 +251,16 @@ class StatsView_ViewController: UIViewController {
                 self.vomiting_number.text = String(vomiting)
                 self.fatigue_number.text = String(severe_fatigue)
                 self.aches_number.text = String(severe_muscle_aches)
+            
+                // Set the percentages
+                self.cough_percent.text = String(format: "%.2f", ((Float(cough)/total_entries)*100))
+                self.fever_percent.text = String(format: "%.2f", ((Float(fever)/total_entries)*100))
+                self.breath_percent.text = String(format: "%.2f", ((Float(shortness_of_breath)/total_entries)*100))
+                self.throat_percent.text = String(format: "%.2f", ((Float(sore_throat)/total_entries)*100))
+                self.taste_percent.text = String(format: "%.2f", ((Float(loss_taste_smell)/total_entries)*100))
+                self.vomiting_percent.text = String(format: "%.2f", ((Float(vomiting)/total_entries)*100))
+                self.fatigue_percent.text = String(format: "%.2f", ((Float(severe_fatigue)/total_entries)*100))
+                self.aches_percent.text = String(format: "%.2f", ((Float(severe_muscle_aches)/total_entries)*100))
         })
         return
     }
