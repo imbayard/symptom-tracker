@@ -24,6 +24,8 @@ import Foundation
 
 class ViewController: UIViewController, GIDSignInDelegate {
     
+    var refUserDb: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
         GIDSignIn.sharedInstance()?.delegate = self
+        refUserDb = Database.database().reference().child("users")
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -51,6 +54,17 @@ class ViewController: UIViewController, GIDSignInDelegate {
             }
             guard let email = user.profile.email else { return }
             print("User is signed in", email)
+            guard let dispName = Auth.auth().currentUser?.displayName else {
+                print("No user")
+                return
+            }
+            self.databaseHandle = self.refUserDb?.child("UserList").observe(.value, with: { (snapshot) in
+                if (snapshot.value as! NSDictionary)[dispName] != nil{
+                    print("Not first time logging in")
+                } else {
+                    self.refUserDb.child("UserList").child(dispName).setValue(true)
+                }
+            })
         }
         performSegue(withIdentifier: "Login_To_Dash", sender: ViewController())
     }
@@ -212,6 +226,7 @@ class HomePage_ViewController: UIViewController {
 class StatsView_ViewController: UIViewController {
     
     var refSymptomDb: DatabaseReference!
+    var refUserDb: DatabaseReference!
     var databaseHandle: DatabaseHandle!
     
     // Outlets for symptom stats
@@ -237,10 +252,11 @@ class StatsView_ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         refSymptomDb = Database.database().reference().child("symptoms")
+        refUserDb = Database.database().reference().child("users")
         loadSymptoms()
         apiCall()
     }
-
+    
     func loadSymptoms() {
         databaseHandle = refSymptomDb?.child("Symptoms").observe(.value, with: { (snapshot) in
                 let snapshotValue = snapshot.value as! [String:AnyObject]
