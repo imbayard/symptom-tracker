@@ -1,6 +1,6 @@
 README
 
-Covid Tracking App
+Covid Tracking App (Database is in Firebase Realtime Database https://console.firebase.google.com/project/symptom-tracker-d565c/database/symptom-tracker-d565c/data)
 
 End to end user flows:
     User logs into the application and enters into the Welcome page. User clicks the Symptom Tracker button and the Symptom Check page appears as the user has not filled out their symptoms for that current day. User fills out their present symptoms and clicks Submit. Welcome page reappears and the user can now check the Covid-19 stats by clicking the See Stats button. User clicks the Back Home button to get back to the Welcome page. The user will not be able to click the Symptom Tracker button again until the next day is present, an error message appearing in the meantime. 
